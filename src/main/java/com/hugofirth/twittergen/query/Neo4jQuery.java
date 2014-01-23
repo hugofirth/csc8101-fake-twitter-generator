@@ -5,7 +5,9 @@ import com.hugofirth.twittergen.twitter.Hashtag;
 import com.hugofirth.twittergen.twitter.Tweet;
 import com.hugofirth.twittergen.twitter.User;
 import org.neo4j.graphdb.DynamicLabel;
+import org.neo4j.graphdb.DynamicRelationshipType;
 import org.neo4j.graphdb.Label;
+import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.unsafe.batchinsert.BatchInserter;
 import org.neo4j.unsafe.batchinsert.BatchInserters;
 
@@ -66,7 +68,7 @@ public class Neo4jQuery implements QueryInterface{
         }
         //Create Tweet nodes in Neo4j
         for(Tweet t: this.generator.getTweets()){
-            t.setNodeId(inserter.createNode(tweetLabel));
+            t.setNodeId(inserter.createNode(null, tweetLabel));
         }
         //Create Hashtag nodes in Neo4j
         for(Hashtag h: this.generator.getHashtags()){
@@ -75,10 +77,40 @@ public class Neo4jQuery implements QueryInterface{
         }
 
         //Create relationships
+        RelationshipType follows = DynamicRelationshipType.withName("FOLLOWS");
+        RelationshipType sent = DynamicRelationshipType.withName("SENT");
+        RelationshipType mentions = DynamicRelationshipType.withName("MENTIONS");
+        RelationshipType retweets = DynamicRelationshipType.withName("RETWEETS");
+        RelationshipType contains = DynamicRelationshipType.withName("CONTAINS");
 
+        //Loop through Users creating follow and sent
+        for(User u: this.generator.getUsers()){
+            //Create follows relationships
+            for(User followed: u.getFollowing().values()){
+                inserter.createRelationship(u.getNodeId(), followed.getNodeId(), follows, null);
+            }
+            //Create sent relationships
+            for(Tweet sentTweet: u.getSent()){
+                inserter.createRelationship(u.getNodeId(), sentTweet.getNodeId(), sent, null);
+            }
+        }
 
+        //Loop through Tweets creating retweets, contains and mentions
+        for(Tweet t: this.generator.getTweets()){
+            //Create mentions relationships
+            if(t.getMentions() != null){
+                inserter.createRelationship(t.getNodeId(), t.getMentions().getNodeId(), mentions, null);
+            }
+            //Create contains relationships
+            if(t.getContains() != null){
+                inserter.createRelationship(t.getNodeId(), t.getContains().getNodeId(), contains, null);
+            }
+            //Create retweets relationships
+            if(t.getRetweets() != null){
+                inserter.createRelationship(t.getNodeId(), t.getRetweets().getNodeId(), retweets, null);
+            }
+        }
 
-
-
+        inserter.shutdown();
     }
 }
