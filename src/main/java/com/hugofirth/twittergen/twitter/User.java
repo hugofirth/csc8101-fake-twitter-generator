@@ -9,10 +9,9 @@ import java.util.*;
 /**
  * Created by hugofirth on 15/01/2014.
  */
-public class User implements NodeInterface {
+public class User extends Node {
     private static final Set<String> namesTaken = new HashSet<>();
     private static final RandomDataGenerator rng = new RandomDataGenerator();
-    private Long nodeId;
     private final Integer maxNumFollowing;
     private final Integer maxNumFollowedBy;
     private final Integer maxNumSent;
@@ -201,15 +200,6 @@ public class User implements NodeInterface {
         return sent;
     }
 
-    @Override
-    public Long getNodeId() {
-        return nodeId;
-    }
-
-    @Override
-    public void setNodeId(Long nodeId) {
-        this.nodeId = nodeId;
-    }
     /**
      * Clears the namesTaken hashset.
      */

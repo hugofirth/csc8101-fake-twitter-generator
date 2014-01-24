@@ -60,7 +60,6 @@ public class Generator implements GeneratorInterface {
 
     public Collection<NodeInterface> getNodes() {
         ArrayList<NodeInterface> nodes = new ArrayList<>();
-        //TODO: update all generic instantiations to shorter diamond syntax
         nodes.addAll(this.users);
         nodes.addAll(this.tweets);
         nodes.addAll(this.hashtags);
@@ -219,8 +218,6 @@ public class Generator implements GeneratorInterface {
     {
         //numRetweets = 13% of tweets
         Integer numRetweets = (int)Math.round(this.tweets.size()*0.13);
-        //Base probability of a retweet
-        Double retweetProbability = 0.1;
         //Random number gen
         Random rng = new Random();
         //Shuffle tweets
@@ -230,6 +227,8 @@ public class Generator implements GeneratorInterface {
         Integer i = 0;
         //Iterate until the desired number of tweets are retweets
         while(i<numRetweets && itr.hasNext()){
+            //Base probability of a retweet
+            Double retweetProbability = 0.02;
             Tweet pRetweet = this.tweets.get(rng.nextInt(this.tweets.size()));
             Tweet t = itr.next();
             User originalSender = pRetweet.getSentBy();
@@ -239,6 +238,7 @@ public class Generator implements GeneratorInterface {
                 //TODO: update this to be more realistic (linear or exponential distribution)
                 retweetProbability += (newSender.isFollowing(originalSender))?0.3:0;
                 retweetProbability += (pRetweet.getContains()!=null)?0.5:0;
+                Double rand = rng.nextDouble();
                 if(rng.nextDouble()<retweetProbability){
                     t.setRetweets(pRetweet);
                     i++;

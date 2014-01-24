@@ -4,6 +4,7 @@ import com.hugofirth.twittergen.generator.Generator;
 import com.hugofirth.twittergen.query.Neo4jQuery;
 
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Created by hugofirth on 15/01/2014.
@@ -13,7 +14,9 @@ public class Main {
     public static void main(String[] args){
 
         try {
-            Generator generator = new Generator("/fake_twitter_names.txt", "/fake_twitter_hashtags.txt");
+            URL namesDictionary = Main.class.getResource("/fake_twitter_names.txt");
+            URL hashtagsDictionary = Main.class.getResource("/fake_twitter_hashtags.txt");
+            Generator generator = new Generator(namesDictionary.getPath(), hashtagsDictionary.getPath());
             generator.execute(1000, 250, 2000);
             Neo4jQuery query = new Neo4jQuery(generator);
             query.execute();

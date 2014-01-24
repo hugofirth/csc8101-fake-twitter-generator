@@ -4,9 +4,8 @@ package com.hugofirth.twittergen.twitter;
 /**
  * The type Tweet.
  */
-public class Tweet implements NodeInterface {
+public class Tweet extends Node {
 
-    private Long nodeId;
     //Relationships
     private User sentBy; // (This)<-Sent-(User)
     private User mentions; // (This)-Mentions->(User)
@@ -22,7 +21,6 @@ public class Tweet implements NodeInterface {
     {
         this.sentBy = b.sentBy;
         this.mentions = b.mentions;
-
         this.retweets = b.retweets;
         this.contains = b.contains;
     }
@@ -64,6 +62,34 @@ public class Tweet implements NodeInterface {
     }
 
     /**
+     * Gets constructed text body of tweet
+     *
+     * @return the tweet text
+     */
+    public String getText()
+    {
+        String mention = "";
+        if(this.mentions != null){
+            mention += this.mentions.getName()+" ";
+        }
+
+        String hashtag = "";
+        if(this.contains != null){
+            hashtag += " "+this.contains.getName();
+        }
+
+        if(this.retweets != null){
+            return "RT: "+this.retweets.getText();
+        }
+        //TODO: properly optimise this function.
+        Integer strlen = 120-(mention.length()+hashtag.length());
+        String tweet = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+        tweet = tweet.substring(0, strlen);
+
+        return mention+tweet+"..."+hashtag;
+    }
+
+    /**
      * Sets retweeted Tweet.
      *
      * @param retweets the retweeted Tweet
@@ -88,16 +114,6 @@ public class Tweet implements NodeInterface {
      */
     public void setContains(Hashtag contains) {
         this.contains = contains;
-    }
-
-    @Override
-    public Long getNodeId() {
-        return nodeId;
-    }
-
-    @Override
-    public void setNodeId(Long nodeId) {
-        this.nodeId = nodeId;
     }
 
     /**

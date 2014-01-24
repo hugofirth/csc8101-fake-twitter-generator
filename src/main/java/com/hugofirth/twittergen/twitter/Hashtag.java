@@ -6,10 +6,9 @@ import java.util.Set;
 /**
  * The type Hashtag
  */
-public class Hashtag implements NodeInterface {
+public class Hashtag extends Node {
 
     private static Set<String> namesTaken = new HashSet<>();
-    private Long nodeId;
     //Relationships
     private Set<Tweet> containedBy; // (This)<-Contains-(Tweet)
     //Fields
@@ -71,16 +70,6 @@ public class Hashtag implements NodeInterface {
      */
     public Set<Tweet> getContainedBy() {
         return containedBy;
-    }
-
-    @Override
-    public Long getNodeId() {
-        return this.nodeId;
-    }
-
-    @Override
-    public void setNodeId(Long nodeId) {
-        this.nodeId = nodeId;
     }
 
     /**

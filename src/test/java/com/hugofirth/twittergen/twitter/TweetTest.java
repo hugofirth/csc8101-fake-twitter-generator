@@ -118,6 +118,7 @@ public class TweetTest {
         assertEquals("Tweet failed to return Mentions User", tweet.getMentions(), mentioned);
         assertEquals("Tweet failed to return Retweet Tweet", tweet.getRetweets(), retweeted);
         assertEquals("Tweet failed to return Contains Hashtag", tweet.getContains(), contained);
+        //TODO: test for getText()
     }
 
 }
