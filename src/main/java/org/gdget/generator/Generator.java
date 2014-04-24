@@ -1,12 +1,11 @@
-package com.hugofirth.twittergen.generator;
+package org.gdget.generator;
 
-import com.hugofirth.twittergen.twitter.Hashtag;
-import com.hugofirth.twittergen.twitter.NodeInterface;
-import com.hugofirth.twittergen.twitter.Tweet;
-import com.hugofirth.twittergen.twitter.User;
+import org.gdget.twitter.Hashtag;
+import org.gdget.twitter.NodeInterface;
+import org.gdget.twitter.Tweet;
+import org.gdget.twitter.User;
 import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>fake-twitter-gen</groupId>
-    <artifactId>fake-twitter-gen</artifactId>
+    <groupId>org.gdget</groupId>
+    <artifactId>gdget</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <inceptionYear>2013</inceptionYear>
+    <inceptionYear>2014</inceptionYear>
 
     <licenses>
         <license>
@@ -143,7 +143,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 <configuration>
-                    <mainClass>com.hugofirth.twittergen.Main</mainClass>
+                    <mainClass>org.gdget.Main</mainClass>
                     <arguments>
                         <argument>
                             -Xmx2g

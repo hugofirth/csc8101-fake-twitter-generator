@@ -1,7 +1,7 @@
-package com.hugofirth.twittergen;
+package org.gdget;
 
-import com.hugofirth.twittergen.generator.Generator;
-import com.hugofirth.twittergen.query.Neo4jQuery;
+import org.gdget.generator.Generator;
+import org.gdget.query.Neo4jQuery;
 
 import java.io.IOException;
 import java.net.URL;

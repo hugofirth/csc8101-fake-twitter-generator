@@ -1,4 +1,4 @@
-package com.hugofirth.twittergen;
+package org.gdget;
 
 import java.util.HashMap;
 import java.util.Map;

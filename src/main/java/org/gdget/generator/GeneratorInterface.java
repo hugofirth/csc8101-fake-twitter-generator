@@ -1,11 +1,10 @@
-package com.hugofirth.twittergen.generator;
+package org.gdget.generator;
 
-import com.hugofirth.twittergen.twitter.Hashtag;
-import com.hugofirth.twittergen.twitter.NodeInterface;
-import com.hugofirth.twittergen.twitter.Tweet;
-import com.hugofirth.twittergen.twitter.User;
+import org.gdget.twitter.Hashtag;
+import org.gdget.twitter.NodeInterface;
+import org.gdget.twitter.Tweet;
+import org.gdget.twitter.User;
 
-import java.io.File;
 import java.util.Collection;
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.hugofirth.twittergen.query;
+package org.gdget.query;
 
-import com.hugofirth.twittergen.generator.GeneratorInterface;
+import org.gdget.generator.GeneratorInterface;
 
 /**
  * Created by hugofirth on 15/01/2014.

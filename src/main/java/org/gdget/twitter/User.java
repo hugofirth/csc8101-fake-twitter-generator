@@ -1,7 +1,5 @@
-package com.hugofirth.twittergen.twitter;
+package org.gdget.twitter;
 
-import org.apache.commons.math3.distribution.GammaDistribution;
-import org.apache.commons.math3.distribution.RealDistribution;
 import org.apache.commons.math3.random.RandomDataGenerator;
 
 import java.util.*;

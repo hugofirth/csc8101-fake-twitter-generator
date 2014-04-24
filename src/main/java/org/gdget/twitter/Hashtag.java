@@ -1,4 +1,4 @@
-package com.hugofirth.twittergen.twitter;
+package org.gdget.twitter;
 
 import java.util.HashSet;
 import java.util.Set;

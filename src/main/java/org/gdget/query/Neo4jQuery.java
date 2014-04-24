@@ -1,9 +1,9 @@
-package com.hugofirth.twittergen.query;
+package org.gdget.query;
 
-import com.hugofirth.twittergen.generator.GeneratorInterface;
-import com.hugofirth.twittergen.twitter.Hashtag;
-import com.hugofirth.twittergen.twitter.Tweet;
-import com.hugofirth.twittergen.twitter.User;
+import org.gdget.generator.GeneratorInterface;
+import org.gdget.twitter.Hashtag;
+import org.gdget.twitter.Tweet;
+import org.gdget.twitter.User;
 import org.neo4j.graphdb.DynamicLabel;
 import org.neo4j.graphdb.DynamicRelationshipType;
 import org.neo4j.graphdb.Label;
@@ -13,7 +13,6 @@ import org.neo4j.unsafe.batchinsert.BatchInserters;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by hugofirth on 23/01/2014.

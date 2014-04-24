@@ -1,10 +1,8 @@
-package com.hugofirth.twittergen.generator;
+package org.gdget.generator;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;

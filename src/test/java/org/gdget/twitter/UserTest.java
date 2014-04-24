@@ -1,4 +1,4 @@
-package com.hugofirth.twittergen.twitter;
+package org.gdget.twitter;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
